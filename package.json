@@ -1,0 +1,89 @@
+{
+  "name": "jest-bug",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "precommit": "lint-staged",
+    "lint": "tslint -c tslint.json -p tsconfig.json -t codeFrame \"{src,tests}/**/*.ts\"",
+    "lint:fix": "yarn prettier && yarn lint --fix",
+    "prettier": "prettier --config .prettierrc --write \"tests/**/*.ts\"",
+    "syntax": "tsc --noEmit --skipLibCheck"
+  },
+  "dependencies": {
+    "@types/graphql": "0.13.3",
+    "@types/jest": "23.3.1",
+    "@types/lodash": "4.14.123",
+    "@types/winston": "2.3.9",
+    "axios": "0.18.0",
+    "casual": "1.5.19",
+    "graphql": "0.13.2",
+    "graphql-request": "1.6.0",
+    "graphql-tag": "2.9.2",
+    "husky": "0.14.3",
+    "jest": "24.7.1",
+    "jest-html-reporter": "2.4.2",
+    "jest-puppeteer": "3.2.1",
+    "knex": "0.16.3",
+    "lint-staged": "7.0.4",
+    "mysql": "2.16.0",
+    "node": "10.6.0",
+    "pdfkit": "0.8.3",
+    "prettier": "1.12.1",
+    "puppeteer": "1.6.0",
+    "ts-jest": "22.4.6",
+    "ts-node": "7.0.1",
+    "tslint": "5.10.0",
+    "tslint-config-prettier": "1.12.0",
+    "tslint-microsoft-contrib": "5.0.3",
+    "typescript": "3.4.3",
+    "winston": "2.3.1",
+    "winston-graylog2": "0.7.0"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --config .prettierrc --write",
+      "tslint -c tslint.json -p tsconfig.json --fix",
+      "git add"
+    ]
+  },
+  "jest": {
+    "verbose": true,
+    "reporters": [
+      "default",
+      [
+        "./node_modules/jest-html-reporter",
+        {
+          "pageTitle": "Test Report",
+          "sort": "status",
+          "outputPath": "report/testrun_report.html"
+        }
+      ]
+    ],
+    "modulePaths": [
+      "<rootDir>/tests/"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testRegex": "(/tests/scenarios/.*|(\\.|/)test)\\.ts$",
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "globalSetup": "./scripts/globalSetup.ts",
+    "globalTeardown": "./scripts/globalTeardown.ts",
+    "setupFilesAfterEnv": [
+      "./scripts/setupTestFrameworkScriptFile.js"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "<rootDir>/tsconfig.json",
+        "ignoreCoverageForDecorators": true,
+        "ignoreCoverageForAllDecorators": true
+      }
+    }
+  }
+}
