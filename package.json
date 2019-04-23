@@ -51,15 +51,7 @@
   "jest": {
     "verbose": true,
     "reporters": [
-      "default",
-      [
-        "./node_modules/jest-html-reporter",
-        {
-          "pageTitle": "Test Report",
-          "sort": "status",
-          "outputPath": "report/testrun_report.html"
-        }
-      ]
+      "default"
     ],
     "modulePaths": [
       "<rootDir>/tests/"

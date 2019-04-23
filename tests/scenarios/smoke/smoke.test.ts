@@ -1,4 +1,4 @@
-import { sleep } from "../../src" 
+import { sleep } from "src"
 
 test("some test", async () => {
   await sleep(1000); 
