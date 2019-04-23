@@ -1,6 +1,6 @@
-import { sleep } from "src";
+import { sleep } from "../tests/src";
 
 module.exports = async () => {
-  await sleep(3000); 
+  await sleep(1000); 
   console.log("\nMessage from globalSetup")
 };
